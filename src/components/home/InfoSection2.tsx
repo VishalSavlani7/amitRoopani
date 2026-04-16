@@ -37,7 +37,7 @@ const InfoSection2 = () => (
             A Commitment to <span className="text-accent">Academic Excellence</span>
           </h2>
 
-          <p className="text-muted-foreground font-body text-base mt-3 mb-8 leading-relaxed max-w-lg">
+          <p className="text-justify text-muted-foreground font-body text-base mt-3 mb-8 leading-relaxed max-w-lg">
            Operating across secondary and senior secondary education, he engineers learning systems defined by precision, structure, and results. As Board Examination Co-ordinator and various public exam coordinator he has led high-stakes academic operations with uncompromising standards. With deep command over assessment frameworks and competitive examinations, his work reflects strategic execution at scale. Refined by global exposure through GTTP, his mentorship has translated into international student representation—where vision meets outcome.
           </p>
         </div>

@@ -73,7 +73,7 @@ const InfoSection = () => (
           <h2 className="section-title mt-2 text-left">
             A Commitment to <span className="text-accent">Academic Excellence</span>
           </h2>
-          <p className="text-muted-foreground font-body text-base mt-3 mb-8 leading-relaxed max-w-lg">
+          <p className="text-justify text-muted-foreground font-body text-base mt-3 mb-8 leading-relaxed max-w-lg">
             A recipient of multiple distinctions for teaching excellence, he has been conferred the “Best Teacher” honor for three consecutive years—an early recognition of consistency, impact, and academic command within a leading group of institutions.Recognized by the Rotary Club of Surat, his work transcends accolades—setting benchmarks in academic impact and intellectual authority. Not driven by recognition, but by an uncompromising standard of excellence.          </p>
           {/* <div className="space-y-4">
             {points.map((p) => (

@@ -142,7 +142,7 @@ const [randomQuote, setRandomQuote] = useState(() => {
                 </span>
               </h1>
               <p className="text-justify text-muted-foreground font-body text-lg mt-6 leading-relaxed max-w-lg">
-                He stands at the intersection of intellect and impact—a facilitator defined not by convention, but by calibrated precision and academic authority. With command over Accountancy, Applied Mathematics, Business Studies, and Statistics, he engineers clarity out of complexity and transforms learning into a disciplined pursuit of mastery. His philosophy rejects noise, prioritizing depth, structure, and thinking as a craft. Known for transforming complexity into clarity and students into thinkers.
+                He stands at the intersection of intellect and impact—a facilitator defined not by convention, but by calibrated precision and academic authority. With command over Accountancy, Business Studies, Applied Mathematics and Statistics, he engineers clarity out of complexity and transforms learning into a disciplined pursuit of mastery. His philosophy rejects noise, prioritizing depth, structure, and thinking as a craft. Known for transforming complexity into clarity and students into thinkers.
               </p>
               <div className="flex flex-wrap gap-4 mt-8">
                 <Link
