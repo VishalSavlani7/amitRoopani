@@ -24,7 +24,6 @@ const features = [
 const stats = [
   { icon: Users, value: "3,000+", label: "Students Taught" },
   { icon: Award, value: "15+", label: "Years Experience" },
-  // { icon: FileText, value: "200+", label: "Publications" },
   { icon: Clock, value: "10000+", label: "Lectures Delivered" },
   { icon: Trophy, value: "3x", label: "Best Teacher Award" }
 ];
@@ -87,7 +86,7 @@ const quotes = [
 
 const Index = () => {
   const [allVideos, setAllVideos] = useState(mockVideos);
-  const [videoIdx, setVideoIdx] = useState(0);
+  // const [videoIdx, setVideoIdx] = useState(0);
   const [testimonialIdx, setTestimonialIdx] = useState(0);
 const [randomQuote, setRandomQuote] = useState(() => {
   return quotes[Math.floor(Math.random() * quotes.length)];
@@ -106,10 +105,10 @@ const [randomQuote, setRandomQuote] = useState(() => {
     return () => clearInterval(timer);
   }, []);
 
-  const visibleVideos = [
-    allVideos[videoIdx % allVideos.length],
-    allVideos[(videoIdx + 1) % allVideos.length],
-  ];
+  // const visibleVideos = [
+  //   allVideos[videoIdx % allVideos.length],
+  //   allVideos[(videoIdx + 1) % allVideos.length],
+  // ];
 
   return (
     <Layout>
@@ -181,7 +180,7 @@ const [randomQuote, setRandomQuote] = useState(() => {
       {/* Stats */}
       <section className="page-section reveal">
         <div className="container mx-auto">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
             {stats.map((s) => (
               <div key={s.label} className="text-center glass-card p-8 group">
                 <div className="bg-accent/10 w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-accent/20 transition-colors">

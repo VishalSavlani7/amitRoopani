@@ -116,6 +116,17 @@ const Worksheets = () => {
 
   const currentStep = !selectedBoard ? 0 : !selectedClass ? 1 : !selectedSubject ? 2 : 3;
 
+    const getDownloadLink = (url: string) => {
+  if (url.includes("drive.google.com")) {
+    const fileIdMatch = url.match(/\/d\/(.*?)\//);
+    const fileId = fileIdMatch?.[1];
+    if (fileId) {
+      return `https://drive.google.com/uc?export=download&id=${fileId}`;
+    }
+  }
+  return url;
+};
+
   if (loading) {
     return (
       <Layout>
@@ -271,38 +282,72 @@ const Worksheets = () => {
               <div className="flex items-center gap-2 mb-6">
                 <FileText className="h-5 w-5 text-accent" />
                 <h3 className="font-heading font-semibold text-lg text-foreground">
-                  {filteredWorksheets.length} Worksheet{filteredWorksheets.length !== 1 && "s"} Found
+                  {/* {filteredWorksheets.length} Found */}
+                  Worksheet{filteredWorksheets.length !== 1 && "s"} 
                 </h3>
               </div>
               <div className="grid md:grid-cols-2 gap-5">
                 {filteredWorksheets.map((ws) => (
-                  <div key={ws.No} className="bg-card border border-border rounded-2xl p-6 hover:shadow-lg hover:border-accent/40 hover:-translate-y-0.5 transition-all duration-300">
-                    <div className="flex items-start gap-4">
-                      <div className="bg-accent/10 p-3 rounded-xl shrink-0">
-                        <BookOpen className="h-6 w-6 text-accent" />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <span className="text-xs font-body font-semibold text-accent uppercase tracking-wider">{ws.subject}</span>
-                        <h3 className="font-heading font-semibold text-lg text-foreground mt-1 leading-snug">{ws.title}</h3>
-                        <p className="text-muted-foreground font-body text-sm mt-2 leading-relaxed line-clamp-2">{ws.description}</p>
-                        <div className="flex items-center justify-between mt-5 pt-4 border-t border-border">
-                          <span className="text-xs text-muted-foreground font-body">{ws.date}</span>
-                          <div className="flex items-center gap-2">
-                            {ws.link && (
-                              <>
-                                <a href={ws.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-sm font-body font-semibold bg-accent/10 text-accent hover:bg-accent/20 transition-colors">
-                                  <ExternalLink className="h-3.5 w-3.5" /> View
-                                </a>
-                                <a href={ws.link} download className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-sm font-body font-semibold bg-primary text-primary-foreground hover:bg-primary/90 transition-colors">
-                                  <Download className="h-3.5 w-3.5" /> Download
-                                </a>
-                              </>
-                            )}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <div
+  key={ws.No}
+  className="bg-card border border-border rounded-2xl p-4 sm:p-6 hover:shadow-lg hover:border-accent/40 hover:-translate-y-0.5 transition-all duration-300"
+>
+  <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-4">
+    
+    {/* Icon */}
+    <div className="bg-accent/10 p-2.5 sm:p-3 rounded-xl shrink-0">
+      <BookOpen className="h-5 w-5 sm:h-6 sm:w-6 text-accent" />
+    </div>
+
+    {/* Content */}
+    <div className="flex-1 min-w-0 w-full">
+      
+      <span className="text-[10px] sm:text-xs font-semibold text-accent uppercase tracking-wider">
+        {ws.subject}
+      </span>
+
+      <h3 className="font-semibold text-base sm:text-lg text-foreground mt-1 leading-snug">
+        {ws.title}
+      </h3>
+
+      <p className="text-muted-foreground text-xs sm:text-sm mt-2 leading-relaxed line-clamp-2">
+        {ws.description}
+      </p>
+
+      {/* Footer */}
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mt-4 pt-3 border-t border-border gap-3">
+        
+        <span className="text-xs text-muted-foreground">
+          {ws.date}
+        </span>
+
+        {/* Buttons */}
+        <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
+          {ws.link && (
+            <>
+              <a
+                href={ws.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto justify-center inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold bg-accent/10 text-accent hover:bg-accent/20 transition-colors"
+              >
+                <ExternalLink className="h-3.5 w-3.5" /> View
+              </a>
+
+              <a
+                href={getDownloadLink(ws.link)}
+                className="w-full sm:w-auto justify-center inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+              >
+                <Download className="h-3.5 w-3.5" /> Download
+              </a>
+            </>
+          )}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
                 ))}
               </div>
             </div>

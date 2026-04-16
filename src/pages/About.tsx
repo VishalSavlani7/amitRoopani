@@ -8,17 +8,17 @@ import masonry5 from "@/assets/masonry-5.jpg";
 import masonry6 from "@/assets/masonry-6.jpg";
 import masonry7 from "@/assets/masonry-7.jpg";
 import masonry8 from "@/assets/masonry-8.jpg";
-import { BookOpen, Award, Users, GraduationCap, Target, Heart, Lightbulb, Sparkles, ArrowRight } from "lucide-react";
+import { BookOpen, Award, Users, GraduationCap, Target, Heart, Lightbulb, Sparkles, ArrowRight, Clock, Trophy } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useReveal } from "@/hooks/useReveal";
 import CountUp from "@/components/CountUp";
 import Masonry from "@/components/ui/Masonry";
 
 const stats = [
-  { icon: Users, value: "5,000+", label: "Students Mentored" },
-  { icon: Award, value: "20+", label: "Years of Excellence" },
-  { icon: BookOpen, value: "200+", label: "Publications" },
-  { icon: Sparkles, value: "50+", label: "Awards Received" },
+  { icon: Users, value: "3,000+", label: "Students Taught" },
+  { icon: Award, value: "15+", label: "Years Experience" },
+  { icon: Clock, value: "10000+", label: "Lectures Delivered" },
+  { icon: Trophy, value: "3x", label: "Best Teacher Award" }
 ];
 
 const values = [

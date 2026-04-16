@@ -115,6 +115,17 @@ const Notes = () => {
 
   const currentStep = !selectedBoard ? 0 : !selectedClass ? 1 : !selectedSubject ? 2 : 3;
 
+  const getDownloadLink = (url: string) => {
+  if (url.includes("drive.google.com")) {
+    const fileIdMatch = url.match(/\/d\/(.*?)\//);
+    const fileId = fileIdMatch?.[1];
+    if (fileId) {
+      return `https://drive.google.com/uc?export=download&id=${fileId}`;
+    }
+  }
+  return url;
+};
+
   if (loading) {
     return (
       <Layout>
@@ -270,38 +281,99 @@ const Notes = () => {
               <div className="flex items-center gap-2 mb-6">
                 <FileText className="h-5 w-5 text-accent" />
                 <h3 className="font-heading font-semibold text-lg text-foreground">
-                  {filteredNotes.length} Note{filteredNotes.length !== 1 && "s"} Found
+                  Note{filteredNotes?.length !== 1 && "s"} 
+                  {/* {filteredNotes.length}  Found */}
                 </h3>
               </div>
               <div className="grid md:grid-cols-2 gap-5">
-                {filteredNotes.map((note) => (
-                  <div key={note.No} className="bg-card border border-border rounded-2xl p-6 hover:shadow-lg hover:border-accent/40 hover:-translate-y-0.5 transition-all duration-300">
-                    <div className="flex items-start gap-4">
-                      <div className="bg-accent/10 p-3 rounded-xl shrink-0">
-                        <FileText className="h-6 w-6 text-accent" />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <span className="text-xs font-body font-semibold text-accent uppercase tracking-wider">{note.subject}</span>
-                        <h3 className="font-heading font-semibold text-lg text-foreground mt-1 leading-snug">{note.title}</h3>
-                        <p className="text-muted-foreground font-body text-sm mt-2 leading-relaxed line-clamp-2">{note.description}</p>
-                        <div className="flex items-center justify-between mt-5 pt-4 border-t border-border">
-                          <span className="text-xs text-muted-foreground font-body">{note.date}</span>
-                          <div className="flex items-center gap-2">
-                            {note.link && (
-                              <>
-                                <a href={note.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-sm font-body font-semibold bg-accent/10 text-accent hover:bg-accent/20 transition-colors">
-                                  <ExternalLink className="h-3.5 w-3.5" /> View
-                                </a>
-                                <a href={note.link} download className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-sm font-body font-semibold bg-primary text-primary-foreground hover:bg-primary/90 transition-colors">
-                                  <Download className="h-3.5 w-3.5" /> Download
-                                </a>
-                              </>
-                            )}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                {filteredNotes?.map((note) => (
+                  // <div key={note.No} className="bg-card border border-border rounded-2xl p-6 hover:shadow-lg hover:border-accent/40 hover:-translate-y-0.5 transition-all duration-300">
+                  //   <div className="flex items-start gap-4">
+                  //     <div className="bg-accent/10 p-3 rounded-xl shrink-0">
+                  //       <FileText className="h-6 w-6 text-accent" />
+                  //     </div>
+                  //     <div className="flex-1 min-w-0">
+                  //       <span className="text-xs font-body font-semibold text-accent uppercase tracking-wider">{note.subject}</span>
+                  //       <h3 className="font-heading font-semibold text-lg text-foreground mt-1 leading-snug">{note.title}</h3>
+                  //       <p className="text-muted-foreground font-body text-sm mt-2 leading-relaxed line-clamp-2">{note.description}</p>
+                  //       <div className="flex items-center justify-between mt-5 pt-4 border-t border-border">
+                  //         <span className="text-xs text-muted-foreground font-body">{note.date}</span>
+                  //         <div className="flex items-center gap-2">
+                  //           {note.link && (
+                  //             <>
+                  //               <a href={note.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-sm font-body font-semibold bg-accent/10 text-accent hover:bg-accent/20 transition-colors">
+                  //                 <ExternalLink className="h-3.5 w-3.5" /> View
+                  //               </a>
+                  //               <a href={note.link} download className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-sm font-body font-semibold bg-primary text-primary-foreground hover:bg-primary/90 transition-colors">
+                  //                 <Download className="h-3.5 w-3.5" /> Download
+                  //               </a>
+                  //             </>
+                  //           )}
+                  //         </div>
+                  //       </div>
+                  //     </div>
+                  //   </div>
+                  // </div>
+                  <div
+  key={note.No}
+  className="bg-card border border-border rounded-2xl p-4 sm:p-6 hover:shadow-lg hover:border-accent/40 hover:-translate-y-0.5 transition-all duration-300"
+>
+  <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-4">
+    
+    {/* Icon */}
+    <div className="bg-accent/10 p-2.5 sm:p-3 rounded-xl shrink-0">
+      <BookOpen className="h-5 w-5 sm:h-6 sm:w-6 text-accent" />
+    </div>
+
+    {/* Content */}
+    <div className="flex-1 min-w-0 w-full">
+      <span className="text-[10px] sm:text-xs font-semibold text-accent uppercase tracking-wider">
+        {note.subject}
+      </span>
+
+      <h3 className="font-semibold text-base sm:text-lg text-foreground mt-1 leading-snug">
+        {note.title}
+      </h3>
+
+      <p className="text-muted-foreground text-xs sm:text-sm mt-2 leading-relaxed line-clamp-2">
+        {note.description}
+      </p>
+
+      {/* Footer */}
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mt-4 pt-3 border-t border-border gap-3">
+        
+        <span className="text-xs text-muted-foreground">
+          {note.date}
+        </span>
+
+        {/* Buttons */}
+        <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
+          {note.link && (
+            <>
+              <a
+                href={note.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto justify-center inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold bg-accent/10 text-accent hover:bg-accent/20 transition-colors"
+              >
+                <ExternalLink className="h-3.5 w-3.5" /> View
+              </a>
+
+              <a
+                // href={note.link}
+                href={getDownloadLink(note.link)}
+                download
+                className="w-full sm:w-auto justify-center inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+              >
+                <Download className="h-3.5 w-3.5" /> Download
+              </a>
+            </>
+          )}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
                 ))}
               </div>
             </div>
