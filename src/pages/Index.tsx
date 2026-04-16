@@ -17,8 +17,8 @@ import TestimonialsSection from "@/components/home/TestimonialsSection";
 const features = [
   { icon: FileText, title: "Notes", desc: "Comprehensive notes for every topic, carefully curated", link: "/notes" },
   { icon: BookOpen, title: "Worksheets", desc: "Practice materials & exercises to sharpen skills", link: "/worksheets" },
-  { icon: Video, title: "Video Lectures", desc: "Watch and learn at your own pace, anytime", link: "/blog" },
-  { icon: GraduationCap, title: "Resources", desc: "Curated academic resources for deeper learning", link: "/contact" },
+  { icon: Video, title: "Video Lectures", desc: "Watch and learn at your own pace, anytime", link: "/videos" },
+  { icon: GraduationCap, title: "Resources", desc: "Curated academic resources for deeper learning", link: "/blog" },
 ];
 
 const stats = [
