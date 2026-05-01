@@ -45,12 +45,12 @@ const InfoSection2 = () => (
         {/* RIGHT → Single Image */}
         <div className="flex justify-center lg:justify-end">
           <img
-            src="/images/img2.jpg"
+            src="/images/InfoSectionFinal.png"
             alt="Teaching in classroom"
             loading="lazy"
-            width={640}
-            height={512}
-            className="w-full max-w-md object-cover rounded-2xl shadow-lg"
+            width={600}
+            height={472}
+            className="w-full max-w-md object-cover rounded-2xl"
           />
         </div>
 

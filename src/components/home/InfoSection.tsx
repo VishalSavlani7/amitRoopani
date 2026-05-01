@@ -34,7 +34,7 @@ const InfoSection = () => (
         <div className="relative grid grid-cols-2 gap-3 max-w-lg mx-auto lg:mx-0">
           <div className="row-span-2">
             <img
-              src="/images/img1.jpg"
+              src="/images/img7.png"
               alt="Teaching in classroom"
               loading="lazy"
               width={640}

@@ -36,11 +36,12 @@ const Contact = () => {
       newErrors.email = "Please enter a valid email address";
     }
 
-    if (!form.phone.trim()) {
-      newErrors.phone = "Phone number is required";
-    } else if (!/^\d{10}$/.test(form.phone.trim().replace(/[\s\-()]/g, ""))) {
-      newErrors.phone = "Phone number must be exactly 10 digits";
-    }
+    // if (!form.phone.trim()) {
+    //   newErrors.phone = "Phone number is required";
+    // } else
+    //    if (!/^\d{10}$/.test(form.phone.trim().replace(/[\s\-()]/g, ""))) {
+    //   newErrors.phone = "Phone number must be exactly 10 digits";
+    // }
 
     if (!form.message.trim()) {
       newErrors.message = "Message is required";
@@ -119,7 +120,7 @@ const Contact = () => {
                   <a href="https://www.instagram.com/amit.roopani?igsh=MXdmN2pvb3V3aXY1Mg==" target="_blank" rel="noopener noreferrer" className="bg-secondary p-3 rounded-lg hover:bg-accent/20 transition-colors group">
                     <Instagram className="h-5 w-5 text-accent group-hover:scale-110 transition-transform" />
                   </a>
-                  <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="bg-secondary p-3 rounded-lg hover:bg-accent/20 transition-colors group">
+                  <a href="https://youtube.com/@amitroopani?si=sehqWscvAUfPrO96" target="_blank" rel="noopener noreferrer" className="bg-secondary p-3 rounded-lg hover:bg-accent/20 transition-colors group">
                     <Youtube className="h-5 w-5 text-accent group-hover:scale-110 transition-transform" />
                   </a>
                 </div>
@@ -151,7 +152,7 @@ const Contact = () => {
                 {errors.email && <p className="text-destructive text-xs font-body mt-1 flex items-center gap-1"><AlertCircle className="h-3 w-3" />{errors.email}</p>}
               </div>
               <div>
-                <label className="text-sm font-body font-semibold text-foreground block mb-1.5">Phone Number</label>
+                <label className="text-sm font-body font-semibold text-foreground block mb-1.5">Phone Number (Not Mandatory)</label>
                 <input
                   type="tel"
                   value={form.phone}

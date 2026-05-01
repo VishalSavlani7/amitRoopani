@@ -16,9 +16,9 @@ import Masonry from "@/components/ui/Masonry";
 
 const stats = [
   { icon: Users, value: "3,000+", label: "Students Taught" },
-  { icon: Award, value: "15+", label: "Years Experience" },
+  { icon: Award, value: "17+", label: "Years Experience" },
   { icon: Clock, value: "10000+", label: "Lectures Delivered" },
-  { icon: Trophy, value: "3x", label: "Best Teacher Award" }
+  { icon: Trophy, value: "4x", label: "Master Educator Recognition" }
 ];
 
 const values = [

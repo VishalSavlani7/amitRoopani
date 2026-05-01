@@ -18,14 +18,14 @@ const features = [
   { icon: FileText, title: "Notes", desc: "Comprehensive notes for every topic, carefully curated", link: "/notes" },
   { icon: BookOpen, title: "Worksheets", desc: "Practice materials & exercises to sharpen skills", link: "/worksheets" },
   { icon: Video, title: "Video Lectures", desc: "Watch and learn at your own pace, anytime", link: "/videos" },
-  { icon: GraduationCap, title: "Resources", desc: "Curated academic resources for deeper learning", link: "/blog" },
+  { icon: GraduationCap, title: "Blogs", desc: "Curated academic blogs for deeper learning", link: "/blog" },
 ];
 
 const stats = [
   { icon: Users, value: "3,000+", label: "Students Taught" },
-  { icon: Award, value: "15+", label: "Years Experience" },
+  { icon: Award, value: "17+", label: "Years Experience" },
   { icon: Clock, value: "10000+", label: "Lectures Delivered" },
-  { icon: Trophy, value: "3x", label: "Best Teacher Award" }
+  { icon: Trophy, value: "4x", label: "Master Educator Recognition" }
 ];
 
 const accountingTerms = [
@@ -199,7 +199,7 @@ const [randomQuote, setRandomQuote] = useState(() => {
       {/* Infinite Scroll Marquee — Accounts */}
       <section className="py-5 bg-primary overflow-hidden">
         <div className="marquee-track">
-          <div className="marquee-content">
+          <div className="marquee-content-inverse">
             {accountingTerms?.map((item, i) => (
               <span key={i} className="mx-8 text-primary-foreground/40 font-body text-base whitespace-nowrap select-none">
                 {item}
@@ -307,7 +307,7 @@ const [randomQuote, setRandomQuote] = useState(() => {
            "{randomQuote}"
           </h2>
           <div className="w-12 h-0.5 bg-accent mx-auto mb-4" />
-          <p className="text-primary-foreground/60 font-body italic text-lg">— Amit Roopani</p>
+          {/* <p className="text-primary-foreground/60 font-body italic text-lg">— Amit Roopani</p> */}
         </div>
       </section>
       <InfoSection2 />

@@ -60,7 +60,7 @@ const Footer = () => (
                   <a href="https://www.instagram.com/amit.roopani?igsh=MXdmN2pvb3V3aXY1Mg==" target="_blank" rel="noopener noreferrer" className="rounded-lg transition-colors group">
                     <Instagram className="h-5 w-5 text-accent group-hover:scale-110 transition-transform" />
                   </a>
-                  <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="rounded-lg transition-colors group">
+                  <a href="https://youtube.com/@amitroopani?si=sehqWscvAUfPrO96" target="_blank" rel="noopener noreferrer" className="rounded-lg transition-colors group">
                     <Youtube className="h-5 w-5 text-accent group-hover:scale-110 transition-transform" />
                   </a>
                 </div>

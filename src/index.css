@@ -155,6 +155,11 @@
   display: flex;
   animation: marquee 35s linear infinite;
 }
+.marquee-content-inverse{
+  display: flex;
+  animation: marquee 35s linear infinite;
+  animation-direction: reverse;
+}
 @keyframes marquee {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
