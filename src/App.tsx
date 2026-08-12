@@ -14,7 +14,8 @@ import Videos from "./pages/Videos";
 // import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
 import BlogPost from "./pages/BlogPost";
-import Textbooks from "./pages/TextBooks";
+import TextBooksSection from "./pages/TextBooksSection";
+// import Textbooks from "./pages/TextBooks";
 
 const queryClient = new QueryClient();
 
@@ -29,7 +30,7 @@ const App = () => (
           <Route path="/about" element={<About />} />
           <Route path="/notes" element={<Notes />} />
           <Route path="/worksheets" element={<Worksheets />} />
-          <Route path="/textbooks" element={<Textbooks />} />
+          <Route path="/textbooks" element={<TextBooksSection />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:id" element={<BlogPost />} />
           <Route path="/contact" element={<Contact />} />
