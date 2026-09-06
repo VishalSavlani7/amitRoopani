@@ -64,36 +64,43 @@ const FeedbackSlider = ({ items, accentColor }: SliderProps) => {
   const item = items[current];
 
   return (
-    <div className="relative">
-      <div className="glass-card p-8 min-h-[220px] flex flex-col justify-between overflow-hidden">
+    <div className="relative w-full">
+      {/*
+        - Padding scales down on mobile (p-5) up to desktop (p-8)
+        - min-h uses a smaller floor on mobile since text wraps taller in a narrower column
+        - Long quotes get a scrollable cap on mobile only, so the card never blows out the page height
+      */}
+      <div className="glass-card p-5 sm:p-6 md:p-8 min-h-[260px] sm:min-h-[240px] md:min-h-[220px] flex flex-col justify-between overflow-hidden w-full">
         <div
           key={`${current}-${direction}`}
           className={direction === "right" ? "animate-slide-in-right" : "animate-slide-in-left"}
         >
-          <Quote className={`h-8 w-8 ${accentColor} mb-4`} />
-          <p className="text-foreground font-body text-base leading-relaxed mb-6 italic">
+          <Quote className={`h-6 w-6 sm:h-8 sm:w-8 ${accentColor} mb-3 sm:mb-4 shrink-0`} />
+          <p className="text-foreground font-body text-sm sm:text-base leading-relaxed mb-5 sm:mb-6 italic max-h-[38vh] sm:max-h-none overflow-y-auto pr-1">
             "{item.quote}"
           </p>
           <div className="flex items-center gap-3">
-            <div className={`w-10 h-10 rounded-full ${accentColor.replace("text-", "bg-")}/20 flex items-center justify-center`}>
-              <span className={`font-heading font-bold text-sm ${accentColor}`}>
+            <div className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full ${accentColor.replace("text-", "bg-")}/20 flex items-center justify-center shrink-0`}>
+              <span className={`font-heading font-bold text-xs sm:text-sm ${accentColor}`}>
                 {item.name.split(" ").map(n => n[0]).join("")}
               </span>
             </div>
-            <div>
-              <p className="font-heading font-semibold text-foreground text-sm">{item.name}</p>
-              <p className="text-muted-foreground font-body text-xs">{item.role}</p>
+            <div className="min-w-0">
+              <p className="font-heading font-semibold text-foreground text-sm truncate">{item.name}</p>
+              <p className="text-muted-foreground font-body text-xs truncate">{item.role}</p>
             </div>
           </div>
         </div>
       </div>
 
       {/* Controls */}
-      <div className="flex items-center justify-between mt-4">
-        <div className="flex gap-1.5">
+      <div className="flex items-center justify-between mt-4 gap-3">
+        {/* Dots: horizontally scrollable so 20+ items never overflow the viewport on mobile */}
+        <div className="hidden sm:flex gap-1.5 flex-wrap max-w-[70%]">
           {items.map((_, i) => (
             <button
               key={i}
+              aria-label={`Go to testimonial ${i + 1}`}
               onClick={() => { setDirection(i > current ? "right" : "left"); setCurrent(i); }}
               className={`rounded-full transition-all duration-300 ${
                 i === current ? `${accentColor.replace("text-", "bg-")} w-6 h-2` : "bg-border w-2 h-2 hover:bg-muted-foreground"
@@ -101,11 +108,25 @@ const FeedbackSlider = ({ items, accentColor }: SliderProps) => {
             />
           ))}
         </div>
-        <div className="flex gap-2">
-          <button onClick={prev} className="bg-card border border-border rounded-lg p-2 hover:bg-secondary transition-colors">
+
+        {/* Compact counter shown on mobile instead of a full dot row */}
+        <span className="sm:hidden font-body text-xs text-muted-foreground">
+          {current + 1} / {items.length}
+        </span>
+
+        <div className="flex gap-2 shrink-0">
+          <button
+            onClick={prev}
+            aria-label="Previous testimonial"
+            className="bg-card border border-border rounded-lg p-2 hover:bg-secondary transition-colors"
+          >
             <ChevronLeft className="h-4 w-4 text-foreground" />
           </button>
-          <button onClick={next} className="bg-card border border-border rounded-lg p-2 hover:bg-secondary transition-colors">
+          <button
+            onClick={next}
+            aria-label="Next testimonial"
+            className="bg-card border border-border rounded-lg p-2 hover:bg-secondary transition-colors"
+          >
             <ChevronRight className="h-4 w-4 text-foreground" />
           </button>
         </div>
@@ -116,8 +137,8 @@ const FeedbackSlider = ({ items, accentColor }: SliderProps) => {
 
 const TestimonialsSection = () => (
   <section className="page-section bg-secondary reveal">
-    <div className="container mx-auto">
-      <div className="text-center mb-12">
+    <div className="container mx-auto px-4 sm:px-6">
+      <div className="text-center mb-10 sm:mb-12">
         <span className="section-badge">✦ Testimonials</span>
         <h2 className="section-title mt-2">Voices That Matter</h2>
         <p className="section-subtitle mx-auto">Hear from those who've been part of this journey</p>
@@ -125,8 +146,8 @@ const TestimonialsSection = () => (
 
       <div className="grid md:grid-cols-1 gap-8">
         <div>
-          <h3 className="font-heading font-bold text-foreground text-lg mb-5 flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-accent" />
+          <h3 className="font-heading font-bold text-foreground text-base sm:text-lg mb-4 sm:mb-5 flex items-center gap-2">
+            <span className="w-2.5 h-2.5 rounded-full bg-accent shrink-0" />
             Alumni Speak
           </h3>
           <FeedbackSlider items={alumniTestimonials} accentColor="text-accent" />
