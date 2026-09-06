@@ -122,13 +122,13 @@ const [randomQuote, setRandomQuote] = useState(() => {
           <div className="grid md:grid-cols-2 gap-4 md:gap-16 items-center">
             <div className="order-1 md:order-1">
               <div className="relative">
-                <img
+                {/* <img
                   src={heroImage}
                   alt="Professor in academic study"
                   width={800}
                   height={960}
                   className="rounded-2xl w-full max-w-md mx-auto relative z-10"
-                />
+                /> */}
                 {/* Decorative frame */}
                 {/* <div className="absolute -bottom-4 -right-4 w-full h-full border-2 border-accent/30 rounded-2xl z-0 hidden md:block" />
                 <div className="absolute -top-4 -left-4 w-24 h-24 bg-accent/10 rounded-2xl z-0 hidden md:block" /> */}
